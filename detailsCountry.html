@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all');
+        request.send();
+        request.onload=function(){
+            var data=JSON.parse(request.response);
+            // using forEach function to print details for each country
+            var res=data.forEach(country => {
+      console.log('Name:', country.name.common);
+      console.log('Capital:', country.capital);
+      console.log('Flag:', country.flags.png);
+      console.log('----------next country------------'); // Separation line between countries
+    });
+            console.log(res);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all');
+        request.send();
+        request.onload=function(){
+            var data=JSON.parse(request.response);
+            //using reduce function to add all country population...
+            var res=data.reduce((acc,country) => acc+country.population,0);
+            console.log(res);
+        }
+</script>
+</body>
+</html>
